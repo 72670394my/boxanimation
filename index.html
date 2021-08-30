@@ -11,22 +11,27 @@
         padding: 0px;
         box-sizing: border-box;
         }
+        .box-wrapper{
+         transform: rotateX(180deg); 
+        }
         .container{
             margin: 20px auto;
-            width: 500px;
+            width: 750px;
             height: 400px;
-            border: 2px solid #000;
+            border: 10px solid #000;
             display:flex;
-            transform: rotateY(180)
+            background-color:#000;
         }
         .child{
-            width: 20%;
+            width: 25%;
             height: 100%;
-            background-position: bottom;
+           
         }
+        
          #div1{
              background-color: rgb(209, 25, 209);
          }
+        
          #div2{
              background-color: rgb(236, 12, 150);
          }
@@ -39,12 +44,17 @@
          #div5{
              background-color: yellow;
          }
+          
          .button-section{
             margin: 30px auto;
-           
-              width: 500px;
+          
+              width: 750px;
               display: flex;
               justify-content: space-around;
+         }
+         .button-section{
+           border:none;
+           outline:none;
          }
          .start{
            
@@ -54,20 +64,19 @@
          .stop{
            
              background-color: red;
-             animation:but;
-             
+            
          }
          .start,.stop{
             color: #fff;
             font-size: 20px;
             padding: 5px 10px;
          }
-        @keyframes but {
-            
-        }
     </style>
 </head>
 <body>
+<div class="box-wrapper">
+
+
 <div class="container">
     <div class="child" id="div1"></div>
     <div class="child" id="div2"></div>
@@ -75,9 +84,10 @@
     <div class="child" id="div4"></div>
     <div class="child" id="div5"></div>
 </div>
+</div>
 <div class="button-section">
     <button class="start" onclick="start()">start</button>
-    <button class="stop">stop</button>
+    <button class="stop" onclick="stop()">stop</button>
 </div>
 </body>
 <script>
@@ -86,8 +96,27 @@
     let box3=document.querySelector('#div3');
     let box4=document.querySelector('#div4');
     let box5=document.querySelector('#div5');
+    let flag=true;
+    
     function start(){
-        box1.style.height=(`${Math.random()*100}%`);
+    
+    if(!flag){
+    return 0;
     }
+        box1.style.height=(`${Math.random()*100}%`);
+          box2.style.height=(`${Math.random()*100}%`);
+            box3.style.height=(`${Math.random()*100}%`);
+              box4.style.height=(`${Math.random()*100}%`);
+                box5.style.height=(`${Math.random()*100}%`); 
+                setTimeout(()=>{
+                start()
+                },1500);
+          
+           
+          }
+    function stop(){
+    flag=false;
+    }
+    
 </script>
 </html>
